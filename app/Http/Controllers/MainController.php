@@ -25,7 +25,7 @@ class MainController extends Controller
 
     public function index(Request $request){
         
-        return view('main', [
+        return view('home', [
             'title'=>"Shop ban hang",
             'menus'=>$this->menuService->getParent(),
             'sliders'=>$this->slider->get(),
@@ -51,16 +51,17 @@ class MainController extends Controller
         ]);
     }
 
-    // public function detalProduct(Request $request){
-    //     $result = $this->product->getProductDetal($request);
-
-    //     // dd($result);
-    //     if($result){
-    //         return view('detal', [
-    //             'titles'=>'123'
-    //         ])->render();
-    //     }
-
-
-    // }
+    public function detalProduct(Request $request){
+        $result = $this->product->getProductDetal($request);
+ 
+        if($result){
+            $html = view('detal', ['detals'=>$result])->render();
+            return response()->json([
+                'html'=>$html
+            ]);
+        }
+        return response()->json([
+            'html'=>''
+        ]);
+    }
 }

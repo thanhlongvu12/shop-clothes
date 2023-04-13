@@ -23,15 +23,15 @@ function loadMore(){
     })
 }
 
-function showDetal(id){
-    $('#modal').addClass('show-modal1');
-    $.ajax({
-        type: 'POST',
-        dataType: 'JSON',
-        data: { id },
-        url: 'services/detal-product',
-        success: function(result){
-            console.log(result);
-        }
-    });
-}   
+// function showDetal(id){
+//     $('#modal').addClass('show-modal1');
+//     $.ajax({
+//         type: 'POST',
+//         dataType: 'JSON',
+//         data: { id },
+//         url: 'services/detal-product',
+//         success: function(result){
+//             // $('#showDetalModal').append(result.html);
+//         }
+//     });
+// }   

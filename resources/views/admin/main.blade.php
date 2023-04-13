@@ -48,6 +48,7 @@
               {{-- Nội Dung chính --}}
 
               @yield('content')
+              
             </div>
             <!-- /.card -->
             </div>

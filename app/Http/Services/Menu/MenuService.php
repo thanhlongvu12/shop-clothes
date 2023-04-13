@@ -64,4 +64,19 @@ class MenuService{
 
         return false;
     }
+
+    public function getID($id){
+        return Menu::where('id', $id)->firstOrFail();
+    }
+
+    public function getProduct($menu, $request){
+        $query = $menu->products()->select('id', 'name', 'price', 'image');
+
+        if($request->input('price')){
+            $query->orderby('price', $request->input('price'));
+        }
+
+        return $query->orderByDesc('id')->paginate(20);
+
+    }
 }
