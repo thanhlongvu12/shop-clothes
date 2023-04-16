@@ -2,6 +2,7 @@
 
 namespace App\Http\Services\Product;
 
+use App\Models\Menu;
 use App\Models\Product;
 
 class ProductService{
@@ -24,5 +25,17 @@ class ProductService{
         }
 
         return false;
+    }
+
+    public function show($id){
+        return Product::where('id', $id)->where('active', 1)->firstOrFail();
+    }
+
+    public function getMenu($menu_id){
+        return Menu::where('id', $menu_id)->firstOrFail();
+    }
+
+    public function more(){
+        return Product::select('id', 'name', 'price', 'image')->orderbyDesc('id')->get();
     }
 }
